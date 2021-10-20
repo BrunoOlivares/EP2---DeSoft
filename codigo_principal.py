@@ -1,6 +1,5 @@
 from iniciojogo import inicio_de_jogo
-import random
-import peças_iniciais
+import pecas_iniciais
 
 print("Seja Bem vindo ao nosso JOGO DE DOMINÓ")
 print("----------------------------------------------------------------------------------------------------------")
@@ -14,24 +13,14 @@ while q_jogadores > 4 or q_jogadores < 2:
     q_jogadores = int(input("Entre quantos jogadores se dará este duelo (2 - 4)? "))
 
 começo = inicio_de_jogo(q_jogadores)
+print(começo)
 
-peças = []
+pecinhas = pecas_iniciais.as_pecas(28)
+print(pecinhas)
 
-i1 = 0
-i2 = 0
-i3 = 0
 
-while i3 < 28:
-    if (str(i1) + "|" + str(i2)) in peças or i2 > 6:
-        i1 += 1
-        i2 = 0
-    else:
-        if (str(i2) + "|" + str(i1)) in peças:
-            i2 += 1
-        else:    
-            peças.append((str(i1) + "|" + str(i2)))
-            i2 += 1
-            i3 += 1
+
+
 
 
 
