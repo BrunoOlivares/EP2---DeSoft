@@ -1,12 +1,20 @@
-import random
-from iniciojogo import inicio_de_jogo
+peças = []
 
-q_jogadores = int(input("Serão quantos jogadores na partida? "))
+i1 = 0
+i2 = 0
+i3 = 0
 
-os_jogadores = inicio_de_jogo(q_jogadores)
+while i3 < 28:
+    if (str(i1) + "|" + str(i2)) in peças or i2 > 6:
+        i1 += 1
+        i2 = 0
+    else:
+        if (str(i2) + "|" + str(i1)) in peças:
+            i2 += 1
+        else:    
+            peças.append((str(i1) + "|" + str(i2)))
+            i2 += 1
+            i3 += 1
 
-for jogadores in os_jogadores:
-    for peças in range(0, 7):
-        jogadores.append([str(random.randint(1 , 6)) + "|" + str(random.randint(1,6))])
+  
 
-print (os_jogadores)
