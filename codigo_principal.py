@@ -13,11 +13,17 @@ while q_jogadores > 4 or q_jogadores < 2:
     q_jogadores = int(input("Entre quantos jogadores se dará este duelo (2 - 4)? "))
 
 começo = inicio_de_jogo(q_jogadores)
-print(começo)
 
 pecinhas = pecas_iniciais.as_pecas(28)
-print(pecinhas)
 
+for jogador in começo:
+    for numero in range(0, 7):
+        jogador.append(pecinhas[numero])
+    for i in range(0, 7):
+        del pecinhas[0]
+
+print(começo)
+print(pecinhas)
 
 
 
