@@ -21,18 +21,19 @@ for i in range (0,q_jogadores):
 
 ordem=quem_comeca(jogadores)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+mesa=[]
+for jogador in ordem:
+    if jogador=="jogador 1":
+        print('hi')
+    else:
+        lista_a_jogar=[]
+        for pessoa,pecas in jogadores.items():
+            if pessoa==jogador:
+                lista_a_jogar=jogadores[pessoa]
+                print(lista_a_jogar)
+        if len(mesa)==0:
+            mesa.append(lista_a_jogar[0])
+            del jogadores[pessoa][0]
+        print(lista_a_jogar)
+        print(mesa)
 
