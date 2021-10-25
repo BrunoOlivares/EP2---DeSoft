@@ -1,16 +1,8 @@
 from iniciojogo import inicio_de_jogo
 import pecas_iniciais
-
-print("Seja Bem vindo ao nosso JOGO DE DOMINÓ")
-print("----------------------------------------------------------------------------------------------------------")
-print("Regras:")
-print("----------------------------------------------------------------------------------------------------------")
-
-q_jogadores = int(input("Entre quantos jogadores se dará este duelo (2 - 4)? "))
-
-while q_jogadores > 4 or q_jogadores < 2:
-    print("Não se pode jogar com essa quantidade de jogadores. Tente inserir outro número")
-    q_jogadores = int(input("Entre quantos jogadores se dará este duelo (2 - 4)? "))
+from quem_comeca import quem_comeca
+from BemVindo import q_jogadores
+import dicionario
 
 começo = inicio_de_jogo(q_jogadores)
 
@@ -22,8 +14,13 @@ for jogador in começo:
     for i in range(0, 7):
         del pecinhas[0]
 
-print(começo)
-print(pecinhas)
+jogadores={}
+i=0
+for i in range (0,q_jogadores):
+    jogadores['jogador {}'.format(i+1)]=começo[i]
+
+ordem=quem_comeca(jogadores)
+
 
 
 
