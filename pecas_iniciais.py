@@ -27,5 +27,3 @@ def as_pecas(x):
     random.shuffle(pecas)    
     
     return (pecas)
-
-print(as_pecas(28))
