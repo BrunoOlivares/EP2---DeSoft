@@ -3,6 +3,10 @@ import pecas_iniciais
 from quem_comeca import quem_comeca
 from BemVindo import q_jogadores
 import dicionario
+from Apecainicial import aprimeirapeça
+from qualpecajogarpessoa import peca_a_jogar_pessoa
+from qualpecajogarmaquina import peca_a_jogar_maquina
+from o_meio import meiota
 
 começo = inicio_de_jogo(q_jogadores)
 
@@ -15,25 +19,30 @@ for jogador in começo:
         del pecinhas[0]
 
 jogadores={}
+
 i=0
+
 for i in range (0,q_jogadores):
     jogadores['jogador {}'.format(i+1)]=começo[i]
 
-ordem=quem_comeca(jogadores)
+ordem = quem_comeca(jogadores)
 
-mesa=[]
-for jogador in ordem:
-    if jogador=="jogador 1":
-        print('hi')
-    else:
-        lista_a_jogar=[]
-        for pessoa,pecas in jogadores.items():
-            if pessoa==jogador:
-                lista_a_jogar=jogadores[pessoa]
-                print(lista_a_jogar)
-        if len(mesa)==0:
-            mesa.append(lista_a_jogar[0])
-            del jogadores[pessoa][0]
-        print(lista_a_jogar)
-        print(mesa)
+mesa = []
+
+durante_jogo = meiota(ordem, jogadores, mesa, pecinhas)
+print(durante_jogo)
+                
+                
+                    
+
+
+
+                        
+
+
+                
+
+            
+
+
 
