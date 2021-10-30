@@ -5,6 +5,8 @@ def meiota(ordem, jogadores, mesa, pecinhas):
 
     continuar = True
 
+    empate = 0
+
     while continuar:
 
         for jogador in ordem:
@@ -14,12 +16,16 @@ def meiota(ordem, jogadores, mesa, pecinhas):
                 pessoa = peca_a_jogar_pessoa('jogador 1', jogadores, mesa)
 
                 while len(pecinhas) != 0 and pessoa == False:
+                    print('monte')
+                    print(pecinhas[0])
 
                     jogadores['jogador 1'].append(pecinhas[0])
                     del pecinhas[0]
                     pessoa = peca_a_jogar_pessoa('jogador 1', jogadores, mesa)
 
                 if pessoa == True:
+
+                    empate = 0
                                 
                     print("Sua mão é essa:")
                     print(jogadores['jogador 1'])
@@ -70,12 +76,12 @@ def meiota(ordem, jogadores, mesa, pecinhas):
                             mesa.insert(0, pecainvertida)
                             peca_del = jogadores['jogador 1'].index(peca_pessoa)
                             del jogadores['jogador 1'][peca_del]
+                else:
+                     
+                    empate += 1
                             
                 print(mesa)
                     
-                if len(jogadores['jogador 1']) == 0 :
-                    finalizacao = ("O jogador 1 venceu o jogo")
-                    return finalizacao
                                 
             else:
 
@@ -96,6 +102,8 @@ def meiota(ordem, jogadores, mesa, pecinhas):
                         maquina = peca_a_jogar_maquina(jogador, jogadores, mesa)
                                 
                     if maquina != False:
+
+                        empate = 0
 
                         if maquina[0] == mesa[len(mesa) - 1][1]:
 
@@ -122,9 +130,18 @@ def meiota(ordem, jogadores, mesa, pecinhas):
                             mesa.insert(0, pecainvertida)
                             peca_del = jogadores[jogador].index(maquina)                           
                             del jogadores[jogador][peca_del]
+                    else:
+
+                        empate += 1
 
                 print(mesa)    
 
-                if len(jogadores[jogador]) == 0 :
-                    finalizacao = ("O {} venceu o jogo".format(jogador))
-                    return finalizacao
+            if len(jogadores[jogador]) == 0:
+
+                finalizacao = ("O {} venceu o jogo".format(jogador))
+                return finalizacao
+
+            if empate == len(ordem):
+
+                texto = ('O jogo foi travado')
+                return texto

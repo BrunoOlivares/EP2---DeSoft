@@ -1,36 +1,60 @@
 from iniciojogo import inicio_de_jogo
 import pecas_iniciais
 from quem_comeca import quem_comeca
-from BemVindo import q_jogadores
 import dicionario
 from Apecainicial import aprimeirapeça
 from qualpecajogarpessoa import peca_a_jogar_pessoa
 from qualpecajogarmaquina import peca_a_jogar_maquina
 from o_meio import meiota
 
-começo = inicio_de_jogo(q_jogadores)
+print("Seja Bem vindo ao nosso JOGO DE DOMINÓ")
+pergunta = input("Vamos jogar??")
 
-pecinhas = pecas_iniciais.as_pecas(28)
+while pergunta != 'nao':
 
-for jogador in começo:
-    for numero in range(0, 7):
-        jogador.append(pecinhas[numero])
-    for i in range(0, 7):
-        del pecinhas[0]
+    q_jogadores = int(input("Entre quantos jogadores se dará este duelo (2 - 4)? "))
 
-jogadores={}
+    while q_jogadores > 4 or q_jogadores < 2:
+        print("Não se pode jogar com essa quantidade de jogadores. Tente inserir outro número")
+        q_jogadores = int(input("Entre quantos jogadores se dará este duelo (2 - 4)? "))
 
-i=0
+    começo = inicio_de_jogo(q_jogadores)
 
-for i in range (0,q_jogadores):
-    jogadores['jogador {}'.format(i+1)]=começo[i]
+    pecinhas = pecas_iniciais.as_pecas(28)
 
-ordem = quem_comeca(jogadores)
+    for jogador in começo:
+        for numero in range(0, 7):
+            jogador.append(pecinhas[numero])
+        for i in range(0, 7):
+            del pecinhas[0]
 
-mesa = []
+    jogadores={}
 
-durante_jogo = meiota(ordem, jogadores, mesa, pecinhas)
-print(durante_jogo)
+    i=0
+
+    for i in range (0,q_jogadores):
+        jogadores['jogador {}'.format(i+1)]=começo[i]
+
+    ordem = quem_comeca(jogadores)
+
+    mesa = []
+
+    durante_jogo = meiota(ordem, jogadores, mesa, pecinhas)
+    print(durante_jogo)
+    
+
+
+
+
+
+
+
+
+
+
+
+    pergunta=input("Voce ainda quer jogar?")
+print('Até a proxima!')
                 
                 
                     
