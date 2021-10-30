@@ -6,6 +6,8 @@ from Apecainicial import aprimeirapeça
 from qualpecajogarpessoa import peca_a_jogar_pessoa
 from qualpecajogarmaquina import peca_a_jogar_maquina
 from o_meio import meiota
+from soma_final import soma_de_cada_mao
+from soma_final import percorrer_max_dicionario
 
 print("Seja Bem vindo ao nosso JOGO DE DOMINÓ")
 pergunta = input("Vamos jogar??")
@@ -40,8 +42,16 @@ while pergunta != 'nao':
     mesa = []
 
     durante_jogo = meiota(ordem, jogadores, mesa, pecinhas)
-    print(durante_jogo)
-    
+
+    jogadores=soma_de_cada_mao(jogadores)
+    if durante_jogo=='O jogo foi travado':
+        vencedor=percorrer_max_dicionario(jogadores)
+        print(jogadores)
+        print(vencedor)
+    else:
+        print(jogadores)
+        print(durante_jogo)
+
 
 
 
