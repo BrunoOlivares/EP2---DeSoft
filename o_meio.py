@@ -3,124 +3,128 @@ from qualpecajogarpessoa import peca_a_jogar_pessoa
 
 def meiota(ordem, jogadores, mesa, pecinhas):
 
-    for jogador in ordem:
-                    
-        if jogador == "jogador 1":
+    continuar = True
 
-            pessoa = peca_a_jogar_pessoa('jogador 1', jogadores, mesa)
+    while continuar:
 
-            while len(pecinhas) != 0 and pessoa == False:
+        for jogador in ordem:
+                        
+            if jogador == "jogador 1":
 
-                jogadores['jogador 1'].append(pecinhas[0])
-                del pecinhas[0]
                 pessoa = peca_a_jogar_pessoa('jogador 1', jogadores, mesa)
 
-            if pessoa == True:
-                            
-                print("Sua mão é essa:")
-                print(jogadores['jogador 1'])
-                escolher = int(input("Qual peça escolher? "))
+                while len(pecinhas) != 0 and pessoa == False:
 
-                while escolher < 0 or escolher > len(jogadores['jogador 1']):
+                    jogadores['jogador 1'].append(pecinhas[0])
+                    del pecinhas[0]
+                    pessoa = peca_a_jogar_pessoa('jogador 1', jogadores, mesa)
 
-                    escolher = int(input("Qual peça escolher"))                        
-                    
-                peca_pessoa = jogadores['jogador 1'][(escolher - 1)]
-                            
-                if len(mesa) == 0:
+                if pessoa == True:
+                                
+                    print("Sua mão é essa:")
+                    print(jogadores['jogador 1'])
+                    escolher = int(input("Qual peça escolher? "))
 
-                    mesa.append(peca_pessoa)
-                    peca_del = jogadores['jogador 1'].index(peca_pessoa)
-                    del jogadores['jogador 1'][peca_del]                    
+                    while escolher < 0 or escolher > len(jogadores['jogador 1']):
 
-                else:
-
-                    while peca_pessoa[0] != mesa[len(mesa) - 1][1] and peca_pessoa[1] != mesa[0][0] and peca_pessoa[1] != mesa[len(mesa) - 1][1] and peca_pessoa[0] != mesa[0][0]:
-
-                        print ("A peça está disponível, mas não é essa, tente escolher outra")
-                        escolher = int(input("Qual peça escolher? "))
-                        peca_pessoa = jogadores['jogador 1'][escolher - 1]
-                                    
-                    if peca_pessoa[0] == mesa[len(mesa) - 1][1]:
+                        escolher = int(input("Qual peça escolher"))                        
+                        
+                    peca_pessoa = jogadores['jogador 1'][(escolher - 1)]
+                                
+                    if len(mesa) == 0:
 
                         mesa.append(peca_pessoa)
                         peca_del = jogadores['jogador 1'].index(peca_pessoa)
-                        del jogadores['jogador 1'][peca_del]
+                        del jogadores['jogador 1'][peca_del]                    
 
-                    elif peca_pessoa[1] == mesa[0][0]:
+                    else:
 
-                        mesa.insert(0, peca_pessoa)
-                        peca_del = jogadores['jogador 1'].index(peca_pessoa)
-                        del jogadores['jogador 1'][peca_del]
-                                    
-                    elif peca_pessoa[1] == mesa[len(mesa) - 1][1]:
+                        while peca_pessoa[0] != mesa[len(mesa) - 1][1] and peca_pessoa[1] != mesa[0][0] and peca_pessoa[1] != mesa[len(mesa) - 1][1] and peca_pessoa[0] != mesa[0][0]:
 
-                        pecainvertida = list(reversed(peca_pessoa))
-                        mesa.append(pecainvertida)
-                        peca_del = jogadores['jogador 1'].index(peca_pessoa)
-                        del jogadores['jogador 1'][peca_del]
-                                    
-                    elif peca_pessoa[0] == mesa[0][0]:
+                            print ("A peça está disponível, mas não é essa, tente escolher outra")
+                            escolher = int(input("Qual peça escolher? "))
+                            peca_pessoa = jogadores['jogador 1'][escolher - 1]
+                                        
+                        if peca_pessoa[0] == mesa[len(mesa) - 1][1]:
 
-                        pecainvertida = list(reversed(peca_pessoa))
-                        mesa.insert(0, pecainvertida)
-                        peca_del = jogadores['jogador 1'].index(peca_pessoa)
-                        del jogadores['jogador 1'][peca_del]
-                        
-            print(mesa)
-                
-            if len(jogadores['jogador 1']) == 0 :
-                finalizacao = ("O jogador 1 venceu o jogo")
-                return finalizacao
+                            mesa.append(peca_pessoa)
+                            peca_del = jogadores['jogador 1'].index(peca_pessoa)
+                            del jogadores['jogador 1'][peca_del]
+
+                        elif peca_pessoa[1] == mesa[0][0]:
+
+                            mesa.insert(0, peca_pessoa)
+                            peca_del = jogadores['jogador 1'].index(peca_pessoa)
+                            del jogadores['jogador 1'][peca_del]
+                                        
+                        elif peca_pessoa[1] == mesa[len(mesa) - 1][1]:
+
+                            pecainvertida = list(reversed(peca_pessoa))
+                            mesa.append(pecainvertida)
+                            peca_del = jogadores['jogador 1'].index(peca_pessoa)
+                            del jogadores['jogador 1'][peca_del]
+                                        
+                        elif peca_pessoa[0] == mesa[0][0]:
+
+                            pecainvertida = list(reversed(peca_pessoa))
+                            mesa.insert(0, pecainvertida)
+                            peca_del = jogadores['jogador 1'].index(peca_pessoa)
+                            del jogadores['jogador 1'][peca_del]
                             
-        else:
-
-            maquina = peca_a_jogar_maquina(jogador, jogadores, mesa)
-
-            if len(mesa) == 0:
-
-                mesa.append(maquina)
-                peca_del = jogadores[jogador].index(maquina)
-                del jogadores[jogador][peca_del]
-
+                print(mesa)
+                    
+                if len(jogadores['jogador 1']) == 0 :
+                    finalizacao = ("O jogador 1 venceu o jogo")
+                    return finalizacao
+                                
             else:
 
-                while len(pecinhas) != 0 and maquina == False:
+                maquina = peca_a_jogar_maquina(jogador, jogadores, mesa)
 
-                    (jogadores[jogador]).append(pecinhas[0])
-                    del pecinhas[0]
-                    maquina = peca_a_jogar_maquina(jogador, jogadores, mesa)
-                            
-                if maquina != False:
+                if len(mesa) == 0:
 
-                    if maquina[0] == mesa[len(mesa) - 1][1]:
+                    mesa.append(maquina)
+                    peca_del = jogadores[jogador].index(maquina)
+                    del jogadores[jogador][peca_del]
 
-                        mesa.append(maquina)
-                        peca_del = jogadores[jogador].index(maquina)
-                        del jogadores[jogador][peca_del]
+                else:
 
-                    elif maquina[1] == mesa[0][0]:
+                    while len(pecinhas) != 0 and maquina == False:
 
-                        mesa.insert(0, maquina)
-                        peca_del = jogadores[jogador].index(maquina)
-                        del jogadores[jogador][peca_del]
-                                        
-                    elif maquina[1] == mesa[len(mesa) - 1][1]:
+                        (jogadores[jogador]).append(pecinhas[0])
+                        del pecinhas[0]
+                        maquina = peca_a_jogar_maquina(jogador, jogadores, mesa)
+                                
+                    if maquina != False:
 
-                        pecainvertida = list(reversed(maquina))
-                        mesa.append(pecainvertida)
-                        peca_del = jogadores[jogador].index(maquina)                            
-                        del jogadores[jogador][peca_del]
-                                        
-                    elif maquina[0] == mesa[0][0]:
+                        if maquina[0] == mesa[len(mesa) - 1][1]:
 
-                        pecainvertida = list(reversed(maquina))
-                        mesa.insert(0, pecainvertida)
-                        peca_del = jogadores[jogador].index(maquina)                           
-                        del jogadores[jogador][peca_del]
+                            mesa.append(maquina)
+                            peca_del = jogadores[jogador].index(maquina)
+                            del jogadores[jogador][peca_del]
 
-            print(mesa)    
+                        elif maquina[1] == mesa[0][0]:
 
-            if len(jogadores[jogador]) == 0 :
-                finalizacao = ("O {} venceu o jogo".format(jogador))
-                return finalizacao
+                            mesa.insert(0, maquina)
+                            peca_del = jogadores[jogador].index(maquina)
+                            del jogadores[jogador][peca_del]
+                                            
+                        elif maquina[1] == mesa[len(mesa) - 1][1]:
+
+                            pecainvertida = list(reversed(maquina))
+                            mesa.append(pecainvertida)
+                            peca_del = jogadores[jogador].index(maquina)                            
+                            del jogadores[jogador][peca_del]
+                                            
+                        elif maquina[0] == mesa[0][0]:
+
+                            pecainvertida = list(reversed(maquina))
+                            mesa.insert(0, pecainvertida)
+                            peca_del = jogadores[jogador].index(maquina)                           
+                            del jogadores[jogador][peca_del]
+
+                print(mesa)    
+
+                if len(jogadores[jogador]) == 0 :
+                    finalizacao = ("O {} venceu o jogo".format(jogador))
+                    return finalizacao
