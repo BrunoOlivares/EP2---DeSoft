@@ -1,1 +1,0 @@
-print("Guilherme Paraiso")

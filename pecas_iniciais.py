@@ -26,8 +26,4 @@ def as_pecas(x):
 
     random.shuffle(pecas)    
     
-<<<<<<< HEAD
     return (pecas)
-=======
-    return (pecas)
->>>>>>> 5d1832957e419071ee5138302d7175af9af7bd1c
