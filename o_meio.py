@@ -33,7 +33,8 @@ def meiota(ordem, jogadores, mesa, pecinhas):
 
                     while escolher < 0 or escolher > len(jogadores['jogador 1']):
 
-                        escolher = int(input("Qual peça escolher"))                        
+                        print("Você não tem esse tanto de peças, tente mais uma vez")
+                        escolher = int(input("Qual peça escolher?"))                        
                         
                     peca_pessoa = jogadores['jogador 1'][(escolher - 1)]
                                 
