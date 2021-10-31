@@ -10,6 +10,7 @@ from soma_final import soma_de_cada_mao
 from soma_final import percorrer_max_dicionario
 
 print("Seja Bem vindo ao nosso JOGO DE DOMINÓ")
+
 pergunta = input("Vamos jogar??")
 
 while pergunta != 'nao':
@@ -17,6 +18,7 @@ while pergunta != 'nao':
     q_jogadores = int(input("Entre quantos jogadores se dará este duelo (2 - 4)? "))
 
     while q_jogadores > 4 or q_jogadores < 2:
+
         print("Não se pode jogar com essa quantidade de jogadores. Tente inserir outro número")
         q_jogadores = int(input("Entre quantos jogadores se dará este duelo (2 - 4)? "))
 
@@ -25,9 +27,12 @@ while pergunta != 'nao':
     pecinhas = pecas_iniciais.as_pecas(28)
 
     for jogador in começo:
+
         for numero in range(0, 7):
+
             jogador.append(pecinhas[numero])
         for i in range(0, 7):
+
             del pecinhas[0]
 
     jogadores={}
@@ -35,6 +40,7 @@ while pergunta != 'nao':
     i=0
 
     for i in range (0,q_jogadores):
+
         jogadores['jogador {}'.format(i+1)]=começo[i]
 
     ordem = quem_comeca(jogadores)
@@ -43,21 +49,18 @@ while pergunta != 'nao':
 
     durante_jogo = meiota(ordem, jogadores, mesa, pecinhas)
 
-    jogadores=soma_de_cada_mao(jogadores)
-    if durante_jogo=='O jogo foi travado':
-        vencedor=percorrer_max_dicionario(jogadores)
+    jogadores = soma_de_cada_mao(jogadores)
+
+    if durante_jogo == 'O jogo foi travado':
+
+        vencedor = percorrer_max_dicionario(jogadores)
         print(jogadores)
         print(vencedor)
+
     else:
+
         print(jogadores)
         print(durante_jogo)
-
-
-
-
-
-
-
 
 
 
