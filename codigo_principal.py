@@ -62,14 +62,11 @@ while pergunta != 'nao':
         print(jogadores)
         print(durante_jogo)
 
-
-
-
-
     pergunta=input("Voce ainda quer jogar?")
+
 print('Até a proxima!')
                 
-                
+print("Agora deve ir")      
                     
 
 

@@ -52,3 +52,6 @@ def percorrer_min_dicionario(dicionario):
     else:
 
         return ('o vencedor do jogo foi {}'.format(vencedor))
+
+
+        
