@@ -15,6 +15,8 @@ def meiota(ordem, jogadores, mesa, pecinhas):
 
                 pessoa = peca_a_jogar_pessoa('jogador 1', jogadores, mesa)
 
+                #pegar do monte
+
                 while len(pecinhas) != 0 and pessoa == False:
                     print('monte')
                     print(pecinhas[0])
@@ -26,9 +28,13 @@ def meiota(ordem, jogadores, mesa, pecinhas):
                 if pessoa == True:
 
                     empate = 0
-                                
+                    pecas_disponiveis=peca_a_jogar(jogadores[jogador],mesa)   
                     print("Sua mão é essa:")
                     print(jogadores['jogador 1'])
+                    if len(mesa) != 0:
+                        print("As pecas disponiveis a jogar estão na posição {}".format(','.join(pecas_disponiveis)))
+                    else:
+                        print(pecas_disponiveis)
                     escolher = int(input("Qual peça escolher? "))
 
                     while escolher < 0 or escolher > len(jogadores['jogador 1']):
@@ -46,8 +52,7 @@ def meiota(ordem, jogadores, mesa, pecinhas):
                     else:
 
                         while peca_pessoa[0] != mesa[len(mesa) - 1][1] and peca_pessoa[1] != mesa[0][0] and peca_pessoa[1] != mesa[len(mesa) - 1][1] and peca_pessoa[0] != mesa[0][0]:
-
-                            print ("A peça está disponível, mas não é essa, tente escolher outra")
+                            pecas_disponiveis=peca_a_jogar(jogadores['jogador 1'],mesa)
                             escolher = int(input("Qual peça escolher? "))
                             peca_pessoa = jogadores['jogador 1'][escolher - 1]
                                         
@@ -137,11 +142,31 @@ def meiota(ordem, jogadores, mesa, pecinhas):
                 print(mesa)    
 
             if len(jogadores[jogador]) == 0:
-
-                finalizacao = ("O {} venceu o jogo".format(jogador))
+                if jogador=='jogador 1':
+                    finalizacao=('Voce venceu o jogo, Parabens!')
+                else:
+                    finalizacao = ("O {} venceu o jogo".format(jogador))
                 return finalizacao
 
             if empate == len(ordem):
 
                 texto = ('O jogo foi travado')
                 return texto
+def peca_a_jogar(mao,mesa):
+    if len(mesa) != 0:
+        locais_a_jogar=[]
+        numero_final=mesa[len(mesa)-1][1]
+        numero_inicial=mesa[0][0]
+        for peca in mao:
+            x=mao.index(peca)
+            if (peca[1]==numero_final or peca[1]==numero_inicial) and (peca[0]!=numero_inicial and peca[0]!=numero_final):
+                locais_a_jogar.append(x+1)
+            if (peca[0]==numero_inicial or peca[0]==numero_final) and (peca[1]!=numero_final and peca[1]!=numero_inicial) :
+                locais_a_jogar.append(x+1)
+            elif (peca[1]==numero_final or peca[1]==numero_inicial) and (peca[0]==numero_inicial or peca[0]==numero_final):
+                locais_a_jogar.append(x+1)
+        locais=[str(i) for i in locais_a_jogar]
+        return locais
+    else:
+        return 'Escolha a peça a começar!'
+

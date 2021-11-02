@@ -7,22 +7,21 @@ def soma_de_cada_mao(dicionario):
                 total += numero
             dic[item]=valor,total 
     return dic
-def percorrer_max_dicionario(dicionario):
-    lista=[]
-    for item,valor in dicionario.items():
-        total=0
-        if len(valor) !=0 :
-            for pecas in valor:
-                for numero in pecas:
-                    total += numero
-                lista.append(total)
+def vencedor(di):
+    min=3000000
     l=[]
-    maximo=max(lista)
-    for item,valor in dicionario.items():
-        if maximo in valor:
+    contador=0
+    vencedor=''
+    for item in di:
+        valor=di[item][1]
+        l.append(valor)
+        if valor<min:
+            min=valor
             vencedor=item
-            l.append(vencedor)
-    if len(l)>1:
-        return ('empate entre os jogadores')
+    for v in l:
+        if v==min:
+            contador+=1
+    if contador>1:
+        return ('Empate entre os jogadores')
     else:
-        return ('o vencedor do jogo foi {}'.format(vencedor))
+        return ('o vencedor do jogo foi {} com a soma de suas peças sendo em torno de {} pontos'.format(vencedor,min))
