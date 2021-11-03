@@ -32,7 +32,7 @@ def meiota(ordem, jogadores, mesa, pecinhas):
                     print("Sua mão é essa:")
                     print(jogadores['jogador 1'])
                     if len(mesa) != 0:
-                        print("As pecas disponiveis a jogar estão na posição {}".format(','.join(pecas_disponiveis)))
+                        print("As pecas disponiveis a jogar estão nas posições: {}".format(','.join(pecas_disponiveis)))
                     else:
                         print(pecas_disponiveis)
                     escolher = int(input("Qual peça escolher? "))
