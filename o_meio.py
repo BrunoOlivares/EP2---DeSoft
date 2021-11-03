@@ -54,6 +54,7 @@ def meiota(ordem, jogadores, mesa, pecinhas):
 
                         while peca_pessoa[0] != mesa[len(mesa) - 1][1] and peca_pessoa[1] != mesa[0][0] and peca_pessoa[1] != mesa[len(mesa) - 1][1] and peca_pessoa[0] != mesa[0][0]:
                             pecas_disponiveis=peca_a_jogar(jogadores['jogador 1'],mesa)
+                            print("Essa peça não se encaixa")
                             escolher = int(input("Qual peça escolher? "))
                             peca_pessoa = jogadores['jogador 1'][escolher - 1]
                                         
@@ -153,7 +154,9 @@ def meiota(ordem, jogadores, mesa, pecinhas):
 
                 texto = ('O jogo foi travado')
                 return texto
+
 def peca_a_jogar(mao,mesa):
+    
     if len(mesa) != 0:
         locais_a_jogar=[]
         numero_final=mesa[len(mesa)-1][1]
