@@ -17,5 +17,6 @@ def cores_mesa(pecas):
              print('\033[37m' + "[" + dicionario_de_cores[peca[0]] + '\033[37m' + "|" + dicionario_de_cores[peca[1]] + '\033[37m' + "]")
         else:
             print(('\033[37m' + "[" + dicionario_de_cores[peca[0]] + '\033[37m' + "|" + dicionario_de_cores[peca[1]] + '\033[37m' + "]"), end="")
+        
 
 
