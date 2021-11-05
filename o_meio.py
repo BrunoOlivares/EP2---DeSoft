@@ -3,6 +3,7 @@ from qualpecajogarmaquina import peca_a_jogar_maquina
 from qualpecajogarpessoa import peca_a_jogar_pessoa
 from coreshumano import cores_mãohumana
 from cores_mesa import cores_mesa
+import time
 
 def meiota(ordem, jogadores, mesa, pecinhas):
 
@@ -89,8 +90,10 @@ def meiota(ordem, jogadores, mesa, pecinhas):
                 else:
                      
                     empate += 1
-                            
+
+                print("MESA: ")
                 cores_mesa(mesa)
+                time.sleep(2)
                     
                                 
             else:
@@ -144,7 +147,9 @@ def meiota(ordem, jogadores, mesa, pecinhas):
 
                         empate += 1
 
-                cores_mesa(mesa)    
+                print("MESA: ")
+                cores_mesa(mesa)
+                time.sleep(2)    
 
             if len(jogadores[jogador]) == 0:
                 if jogador=='jogador 1':
