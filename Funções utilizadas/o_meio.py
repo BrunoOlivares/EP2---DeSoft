@@ -41,6 +41,7 @@ def meiota(ordem, jogadores, mesa, pecinhas):
                     cores_mãohumana(jogadores['jogador 1'])
                     if len(mesa) != 0:
                         print("As pecas disponiveis a jogar estão nas posições: {}".format(','.join(pecas_disponiveis)))
+                        print("")
                     else:
                         print(pecas_disponiveis)
                     escolher = int(input("Qual peça escolher? "))
@@ -98,7 +99,6 @@ def meiota(ordem, jogadores, mesa, pecinhas):
                     print("Jogador atual sem peças para jogar, PULANDO A VEZ")
                     print("")
 
-                print("")
                 print("MESA: ")
                 cores_mesa(mesa)
                 time.sleep(2)
@@ -159,8 +159,12 @@ def meiota(ordem, jogadores, mesa, pecinhas):
                         print("")
 
                 print("")
+                print(f"O {jogador} jogou a peça:", end="")
+                cor_peca_singular(maquina)
+                print("")
                 print("MESA: ")
                 cores_mesa(mesa)
+                print("")
                 time.sleep(2)    
 
             if len(jogadores[jogador]) == 0:
