@@ -2,7 +2,7 @@ from coreshumano import cores_mãohumana
 from qualpecajogarmaquina import peca_a_jogar_maquina
 from qualpecajogarpessoa import peca_a_jogar_pessoa
 from coreshumano import cores_mãohumana
-from cores_mesa import cores_mesa
+from cores_mesa import cor_peca_singular, cores_mesa
 import time
 
 def meiota(ordem, jogadores, mesa, pecinhas):
@@ -22,8 +22,12 @@ def meiota(ordem, jogadores, mesa, pecinhas):
                 #pegar do monte
 
                 while len(pecinhas) != 0 and pessoa == False:
-                    print('monte')
-                    print(pecinhas[0])
+
+                    print("")
+                    print("SEM PEÇAS, COMPRANDO DO MONTE...")
+                    print("Peça comprada:", end=" ")
+                    cor_peca_singular(pecinhas[0])
+                    print("")
 
                     jogadores['jogador 1'].append(pecinhas[0])
                     del pecinhas[0]
@@ -90,7 +94,11 @@ def meiota(ordem, jogadores, mesa, pecinhas):
                 else:
                      
                     empate += 1
+                    print("")
+                    print("Jogador atual sem peças para jogar, PULANDO A VEZ")
+                    print("")
 
+                print("")
                 print("MESA: ")
                 cores_mesa(mesa)
                 time.sleep(2)
@@ -146,7 +154,11 @@ def meiota(ordem, jogadores, mesa, pecinhas):
                     else:
 
                         empate += 1
+                        print("")
+                        print("Jogador atual sem peças para jogar, PULANDO A VEZ")
+                        print("")
 
+                print("")
                 print("MESA: ")
                 cores_mesa(mesa)
                 time.sleep(2)    

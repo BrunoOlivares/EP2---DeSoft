@@ -1,9 +1,6 @@
 from iniciojogo import inicio_de_jogo
 import pecas_iniciais
 from quem_comeca import quem_comeca
-from Apecainicial import aprimeirapeça
-from qualpecajogarpessoa import peca_a_jogar_pessoa
-from qualpecajogarmaquina import peca_a_jogar_maquina
 from o_meio import meiota
 from soma_final import soma_de_cada_mao
 from soma_final import vencedor
