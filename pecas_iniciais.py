@@ -27,3 +27,4 @@ def as_pecas(x):
     random.shuffle(pecas)    
     
     return (pecas)
+

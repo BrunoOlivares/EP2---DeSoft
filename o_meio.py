@@ -1,5 +1,8 @@
+from coreshumano import cores_mãohumana
 from qualpecajogarmaquina import peca_a_jogar_maquina
 from qualpecajogarpessoa import peca_a_jogar_pessoa
+from coreshumano import cores_mãohumana
+from cores_mesa import cores_mesa
 
 def meiota(ordem, jogadores, mesa, pecinhas):
 
@@ -30,7 +33,7 @@ def meiota(ordem, jogadores, mesa, pecinhas):
                     empate = 0
                     pecas_disponiveis=peca_a_jogar(jogadores[jogador],mesa)   
                     print("Sua mão é essa:")
-                    print(jogadores['jogador 1'])
+                    cores_mãohumana(jogadores['jogador 1'])
                     if len(mesa) != 0:
                         print("As pecas disponiveis a jogar estão nas posições: {}".format(','.join(pecas_disponiveis)))
                     else:
@@ -87,7 +90,7 @@ def meiota(ordem, jogadores, mesa, pecinhas):
                      
                     empate += 1
                             
-                print(mesa)
+                cores_mesa(mesa)
                     
                                 
             else:
@@ -141,7 +144,7 @@ def meiota(ordem, jogadores, mesa, pecinhas):
 
                         empate += 1
 
-                print(mesa)    
+                cores_mesa(mesa)    
 
             if len(jogadores[jogador]) == 0:
                 if jogador=='jogador 1':
