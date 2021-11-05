@@ -7,11 +7,12 @@ from qualpecajogarmaquina import peca_a_jogar_maquina
 from o_meio import meiota
 from soma_final import soma_de_cada_mao
 from soma_final import vencedor
+from cores_mesa import cores_mesa
 
 
 print("Seja Bem vindo ao nosso JOGO DE DOMINÓ")
 
-pergunta = input("Vamos jogar??")
+pergunta = input("Vamos jogar?? ")
 
 while pergunta != 'nao':
 
@@ -48,15 +49,51 @@ while pergunta != 'nao':
     mesa = []
 
     durante_jogo = meiota(ordem, jogadores, mesa, pecinhas)
-    jogadores=soma_de_cada_mao(jogadores)
-    if durante_jogo=='O jogo foi travado':
-        ganhador=vencedor(jogadores)
-        print(jogadores)
-        print(ganhador)
-    else:
-        print(durante_jogo)
+    jogadores = soma_de_cada_mao(jogadores)
 
-        print(jogadores)
+    if durante_jogo == 'O jogo foi travado':
+
+        ganhador = vencedor(jogadores)
+
+        print("")
+        print("RESULTADOS DO JOGO: ")
+        print("")
+
+        for jogador in jogadores:
+            print("{}:".format(jogador))
+            print("- Peças restantes:", end=(" "))
+            cores_mesa(jogadores[jogador][0])
+            print("- Soma de pontos: ", end=" ")
+            print(jogadores[jogador][1])
+            print("")
+
+        print(ganhador)
+
+    else:
+
+        print("")
+        print("RESULTADOS DO JOGO: ")
+        print("")
+
+        for jogador in jogadores:
+            print("{}:".format(jogador))
+
+            print("- Peças restantes:", end=(" "))
+
+            if len(jogadores[jogador]) == 0:
+                print("Nenhuma peça sobrando")
+            else:
+                cores_mesa(jogadores[jogador][0])
+
+            print("- Soma de pontos: ", end=" ")
+
+            if len(jogadores[jogador]) == 0:
+                print("Sem peças, sem pontos")
+            else:
+                print(jogadores[jogador][1])
+
+            print("")
+
         print(durante_jogo)
 
     pergunta=input("Voce ainda quer jogar?")
